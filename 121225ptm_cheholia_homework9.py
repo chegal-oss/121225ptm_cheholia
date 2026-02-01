@@ -1,5 +1,3 @@
-import random
-
 _DEBUG = True
 for task in range(1, 4):
     match task:
