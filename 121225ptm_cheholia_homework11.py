@@ -5,8 +5,8 @@ for task in range(1, 4):
             print("1.Звёздочки вместо чисел")
             text = "My number is 123-456-789"
             print("Строка:", text)
-            print("Результат: ", "".join([c if not c.isdigit() else "*" for c in text]))
-            print("Результат: ", "".join(map(lambda c : "*" if c.isdigit() else c, text)))
+            # print("Результат: ", "".join([c if not c.isdigit() else "*" for c in text]))
+            # print("Результат: ", "".join(map(lambda c : "*" if c.isdigit() else c, text)))
             new_string = list(text)
             for i in range(len(new_string)):
                 char = new_string[i]
