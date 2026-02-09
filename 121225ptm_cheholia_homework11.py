@@ -30,7 +30,7 @@ for task in range(1, 4):
             print(text)
             result = []
             for word in text.split():
-                old = new = word.strip(".,")
+                old = new = word.strip(".")
                 if new.isdigit():
                     new = str(int(new) * 10)
                 else:
