@@ -14,8 +14,8 @@ tmp = ()
 for i, x in enumerate(numbers):
     if numbers.count(x) > 1 and x not in tmp:
         tmp += (x,)
-        print(f"Индексы элемента {x}:", end=" ")
-        for j in range(i, len(numbers)):
+        print(f"Индексы элемента {x}: {i}", end=" ")
+        for j in range(i + 1, len(numbers)):
             if x == numbers[j]:
                 print(j, end=" ")
         print()
