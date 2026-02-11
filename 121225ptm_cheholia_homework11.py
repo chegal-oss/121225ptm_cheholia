@@ -35,11 +35,15 @@ for task in range(1, 4):
                     new = str(int(new) * 10)
                 else:
                     test_float = new.split(".")
-                    if len(test_float) > 1 and test_float[0].isdigit() and test_float[1].isdigit():
+                    if len(test_float) == 2 and test_float[0].isdigit() and test_float[1].isdigit():
                         new = str(float(new) * 10)
                 result.append(word.replace(old, new))
             print(" ".join(result))
 
+            #если номер карты не считать числом которое нужно увеличить
+            print(" ".join([str(int(x) * 10) if x.isdigit() else str(float(x) * 10) if len(
+                (test_float := x.split("."))) == 2 and test_float[0].isdigit() and test_float[1].isdigit() else x for x in
+                           text.split()]))
 
 
 
