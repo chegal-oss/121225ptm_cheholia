@@ -45,6 +45,27 @@ for task in range(1, 4):
                 (test_float := x.split("."))) == 2 and test_float[0].isdigit() and test_float[1].isdigit() else x for x in
                            text.split()]))
 
+            #универсальное решение без split()
+            text = "I have 5 apples and 10 oranges, price is 0.5 each. Card number is ....3672."
+
+            variables, template, buf = [], [], ""
+            for c in text + " ":
+                if c.isdigit() or (c == "." and buf):
+                    buf += c
+                elif buf:
+                    s = buf.strip(".")
+                    variables.append(int(s) if s.isdigit() else float(s))
+                    template.append("{}")
+                    if buf.endswith("."):
+                        template.append(".")
+                    else:
+                        template.append(c)
+                    buf = ""
+                else:
+                    template.append(c)
+
+            print("".join(template).format(*[x * 10 for x in variables]))
+
 
 
 
