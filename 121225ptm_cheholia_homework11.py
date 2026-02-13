@@ -39,7 +39,7 @@ print(" ".join([str(int(x) * 10) if x.isdigit() else str(float(x) * 10) if len(
     (test_float := x.split("."))) == 2 and test_float[0].isdigit() and test_float[1].isdigit() else x for x in
                 text.split()]))
 
-# универсальное решение без split() + шаблон строк (необязательно, но интересно)
+# универсальное решение без split() + формирование шаблона строки (необязательно, но интересно)
 text = "I have.!5apples and ll10oranges, price is0.5! each. Card number is ....3672.ура!"
 
 variables, template, buf = [], [], ""
