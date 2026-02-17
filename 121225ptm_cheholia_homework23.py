@@ -1,8 +1,9 @@
-from typing import Any
+from typing import Any, Iterable
 
 print("\nPython Fundamentals 2025: Домашнее задание 23")
 print("\n1. Объединение данных в строку")
 data = [42, "hello", [1, 2, 3], {"a": 1, "b": 2}]
+
 
 def str_union(data: list[Any]) -> str:
     """
@@ -13,6 +14,7 @@ def str_union(data: list[Any]) -> str:
     """
     return "|".join(map(str, data))
 
+
 print(str_union(data))
 
 print("\n2. Сумма вложенных чисел")
@@ -21,6 +23,8 @@ data = [
     {"name": "Bob", "scores": [5, 15, 25]},
     {"name": "Charlie", "scores": [7, 17, 27]}
 ]
+
+
 def sum_number(data: list[dict]) -> int:
     """
     Принимает список словарей, где каждый словарь
@@ -29,6 +33,6 @@ def sum_number(data: list[dict]) -> int:
     :return: число
     """
     return sum([s for d in data for s in d["scores"]])
+
+
 print("Итоговый балл:", sum_number(data))
-
-
