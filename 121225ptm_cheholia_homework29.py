@@ -1,7 +1,3 @@
-import itertools
-import os
-import sys
-import time
 from typing import OrderedDict, Iterable
 
 print("\nPython Fundamentals 2025: Домашнее задание 29")
