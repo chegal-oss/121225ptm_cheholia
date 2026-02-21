@@ -18,6 +18,7 @@ weekly_schedule = {
 }
 
 for i, key in enumerate(itertools.cycle(weekly_schedule.keys())):
+    #input("Нажмите 'Enter' для получения плана: ")
     print(key, ", ".join(weekly_schedule[key]))
     if i > 7: break
 
