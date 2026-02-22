@@ -35,14 +35,17 @@ for mes in log():
 
 print("\n3. Рамка вокруг вывода")
 
-def decorator_say_hello(func):
-    def wrapper():
-        print("-" * 50)
-        func()
-        print("-" * 50)
-    return wrapper
 
-@decorator_say_hello
+def decorator_say_hello(sym = "-", num=50):
+    def decorator(func):
+        def wrapper():
+            print(sym * num)
+            func()
+            print(sym * num)
+        return wrapper
+    return decorator
+
+@decorator_say_hello()
 def say_hello():
     print("Привет, игрок!")
 
