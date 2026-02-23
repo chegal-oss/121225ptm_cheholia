@@ -4,7 +4,7 @@ strings = ["apple23", "ban1ana45", "12cherry", "grape3", "blue23berry"]
 print(strings)
 new_strings = []
 for x in strings:
-    if x[-1].isdigit() and x.rstrip('0123456789').isalpha():
+    if x[-1].isdigit() and x.rstrip("0123456789").isalpha():
         new_strings.append(x)
 print(new_strings)
 
