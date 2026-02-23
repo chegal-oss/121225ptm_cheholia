@@ -8,11 +8,6 @@ for i in range(len(text_list)-1,-1,-1):
     else:
         text_list[i] = text_list[i].lower()
 print(text_list)
-#или
-text_list = ["Hello", "Python Programming", "World", "Advanced Topics", "Simple"]
-text_list[:] = [x.lower() for x in text_list if len(x.split()) == 1]
-print(text_list)
-
 
 print("\n1. Обновление цен товаров")
 products = [["Laptop", 1200.0], ["Mouse", 25.0], ["Keyboard", 75.0], ["Monitor", 200.0]]
