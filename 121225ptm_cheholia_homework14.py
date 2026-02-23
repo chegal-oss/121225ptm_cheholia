@@ -4,11 +4,9 @@ strings = ["apple23", "ban1ana45", "12cherry", "grape3", "blue23berry"]
 print(strings)
 new_strings = []
 for x in strings:
-    if x[len(x) - 1].isdigit():
+    if x[-1].isdigit() and x.rstrip('0123456789').isalpha():
         new_strings.append(x)
 print(new_strings)
-#или
-print([x for x in strings if x[len(x) - 1].isdigit()])
 
 print("\n2. Удаление кратных")
 numbers = [1, 3, 6, 9, 10, 12, 15, 19, 20]
@@ -18,9 +16,6 @@ for i in numbers.copy():
     if not i % num:
         numbers.remove(i)
 print(numbers)
-#или
-numbers = [1, 3, 6, 9, 10, 12, 15, 19, 20]
-print([x for x in numbers if x % 3])
 
 print("\n3. Порядок четных")
 numbers = [5, 2, 3, 8, 4, 1, 2, 7]
@@ -38,9 +33,7 @@ for i in numbers:
     else:
         new_numbers.append(even.pop())
 print(new_numbers)
-#или
-a = sorted([i for i in numbers if not i % 2])
-print([a.pop() if not x % 2 else x for x in numbers])
+
 
 
 
