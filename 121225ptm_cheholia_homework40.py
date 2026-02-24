@@ -1,8 +1,5 @@
-import math
-from abc import ABC, abstractmethod
 from datetime import datetime
 from functools import total_ordering
-from http.cookiejar import is_third_party
 
 print("\nPython Fundamentals 2025: Домашнее задание 40")
 print("Электронное письмо")
@@ -47,8 +44,6 @@ print(e2)
 print("Length:", len(e1))
 print("Has text:", bool(e1))
 print("Is newer:", e2 > e1)
-
-
 
 print("\nКласс для работы с деньгами")
 print("*" * 50)
