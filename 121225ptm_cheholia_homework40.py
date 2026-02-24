@@ -2,6 +2,7 @@ import math
 from abc import ABC, abstractmethod
 from datetime import datetime
 from functools import total_ordering
+from http.cookiejar import is_third_party
 
 print("\nPython Fundamentals 2025: Домашнее задание 40")
 print("Электронное письмо")
@@ -46,3 +47,35 @@ print(e2)
 print("Length:", len(e1))
 print("Has text:", bool(e1))
 print("Is newer:", e2 > e1)
+
+
+
+print("\nКласс для работы с деньгами")
+print("*" * 50)
+print()
+
+
+class Money:
+    def __init__(self, initial):
+        self.value = initial
+
+    def __add__(self, other):
+        if isinstance(other, Money):
+            return Money(self.value + other.value)
+        return NotImplemented
+
+    def __sub__(self, other):
+        if isinstance(other, Money):
+            return Money(0 if (n := self.value - other.value) < 0 else n)
+        return NotImplemented
+
+    def __repr__(self):
+        return f"${self.value}"
+
+
+money1 = Money(100)
+money2 = Money(50)
+print(money1 + money2)
+print(money1 + money2)
+print(money1 - money2)
+print(money2 - money1)
