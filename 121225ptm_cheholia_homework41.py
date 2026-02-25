@@ -1,6 +1,3 @@
-from functools import lru_cache
-from typing import Generator
-
 import pymysql
 
 print("\nPython Fundamentals 2025: Домашнее задание 41")
