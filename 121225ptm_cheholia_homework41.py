@@ -76,7 +76,7 @@ query = """
         select ci.name, ci.population
         from city as ci inner join country as c on c.code = ci.countrycode and lower(c.name) = lower(%s)
         order by ci.population desc
-        limit 5 \
+        limit 5 
         """
 
 for country_name in countries:
