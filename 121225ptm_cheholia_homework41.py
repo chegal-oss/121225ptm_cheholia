@@ -36,7 +36,6 @@ class MyDatabase:
        self.disconnect()
 
 
-    @lru_cache
     def exec_sql(self, query: str, *params) -> Generator:
         try:
             self._connection.ping(reconnect=True)
@@ -44,7 +43,8 @@ class MyDatabase:
             self._connection = pymysql.connect(**self._config)
         with self._connection.cursor() as cursor:
             cursor.execute(query, params)
-            return (row for row in cursor)
+            return cursor.fetchall()
+
 
 myDatabase = MyDatabase()
 myDatabase.connect()
