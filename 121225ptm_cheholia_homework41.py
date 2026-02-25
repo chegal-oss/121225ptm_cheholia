@@ -55,10 +55,10 @@ for i, (name,) in enumerate(myDatabase.exec_sql("select name from country")):
 print()
 print("*" * 50)
 
-country_list = []
+countries = list()
 for i, (name,) in enumerate(myDatabase.exec_sql("select name from country limit 56, 10")):
     print(f"{i + 1}. {name}")
-    country_list.append(name)
+    countries.append(name)
 print()
 query = """
 select ci.name, ci.population from city as ci 
@@ -68,7 +68,7 @@ order by ci.population desc
 limit 5 
 """
 
-for country_name in country_list:
+for country_name in countries:
     print(f"\nВведите страну: {country_name}")
     for i, (name, population) in enumerate(myDatabase.exec_sql(query, country_name)):
         print(f"{i +1}. {name} - {population}")
