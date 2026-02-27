@@ -2,11 +2,10 @@ print("\nPython Fundamentals 2025: Домашнее задание 14")
 print("\n1. Число в конце")
 strings = ["apple23", "ban1ana45", "12cherry", "grape3", "blue23berry"]
 print(strings)
-new_strings = []
-for x in strings:
-    if x.rstrip("0123456789").isalpha():
-        new_strings.append(x)
-print(new_strings)
+for x in reversed(strings):
+    if not x.rstrip("0123456789").isalpha():
+        strings.remove(x)
+print(strings)
 
 print("\n2. Удаление кратных")
 numbers = [1, 3, 6, 9, 10, 12, 15, 19, 20]
