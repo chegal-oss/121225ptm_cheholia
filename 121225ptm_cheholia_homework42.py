@@ -3,7 +3,7 @@ from typing import Any
 
 import pymysql
 
-print("\nPython Fundamentals 2025: Домашнее задание 43")
+print("\nPython Fundamentals 2025: Домашнее задание 42")
 print("Создание базы, Добавление заметок")
 print("*" * 50)
 
