@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 
-print("\nPython Fundamentals 2025: Домашнее задание 44")
-print("Создание базы, Добавление заметок")
+print("\nPython Fundamentals 2025: Домашнее задание 43")
+print("Добавление товаров, Увеличение цен")
 print("*" * 50)
 
 uri = ("mongodb://ich_editor:verystrongpassword@mongo.itcareerhub.de"
