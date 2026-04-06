@@ -15,7 +15,6 @@ def div_without_error(a: str, b: str) -> float:
         raise MyMadFunctionException("Ошибка: Введено некорректное число.")
 
 
-print("\n2. Логирование ошибок")
 log_format = "%(asctime)s - %(filename)s - %(levelname)s - %(lineno)d - %(message)s"
 logging.basicConfig(
     filename="errors.log",
