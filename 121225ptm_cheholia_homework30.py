@@ -1,13 +1,16 @@
 import json
 from collections import Counter
 from datetime import date, datetime
+from pathlib import Path
 
 print("\nPython Fundamentals 2025: Домашнее задание 30")
 print("\n1. Анализ курсов студентов")
 
+data_file = Path(__file__).with_name("student_courses.json")
+
 print("Первый вариант O(3N)")
 start = datetime.now()
-with open("student_courses.json") as file:
+with data_file.open(encoding="utf-8") as file:
     structure = json.load(file, object_hook=lambda x: {
         **x,
         "birth_date": date.strptime(x["birth_date"], "%d.%m.%Y"),
@@ -23,7 +26,7 @@ print("Время выполнения = ", datetime.now() - start)
 
 print("\nВторой вариант O(1N) с датой")
 start = datetime.now()
-with open("student_courses.json") as file:
+with data_file.open(encoding="utf-8") as file:
     res, counter = {}, Counter()
     for i, student in enumerate(json.load(file)):
         d1 = date.strptime(student["enrollment_date"], "%d.%m.%Y")
@@ -39,7 +42,7 @@ print("Время выполнения = ", datetime.now() - start)
 
 print("\nТретий вариант O(1N) с числами")
 start = datetime.now()
-with open("student_courses.json") as file:
+with data_file.open(encoding="utf-8") as file:
     res, counter = {}, Counter()
     for i, student in enumerate(json.load(file)):
         d1, d2 = int(student["enrollment_date"].split(".")[2]), int(student["birth_date"].split(".")[2])
@@ -51,4 +54,3 @@ with open("student_courses.json") as file:
         res["average_enrollment_age"] /= i + 1
     #print(json.dumps(res, indent=4))
 print("Время выполнения = ", datetime.now() - start)
-

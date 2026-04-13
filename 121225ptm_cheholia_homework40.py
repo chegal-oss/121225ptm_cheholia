@@ -17,12 +17,12 @@ class Email:
         self.date = date
 
     def __lt__(self, other):
-        if isinstance(self, Email):
+        if isinstance(other, Email):
             return self.date < other.date
         return NotImplemented
 
     def __eq__(self, other):
-        if isinstance(self, Email):
+        if isinstance(other, Email):
             return self.date == other.date
         return NotImplemented
 

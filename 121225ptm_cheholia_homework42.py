@@ -1,4 +1,3 @@
-import queue
 from typing import Any
 
 import pymysql
@@ -25,7 +24,10 @@ with pymysql.connect(**config, cursorclass=pymysql.cursors.DictCursor) as connec
         cursor.execute("select count(*) + 1  as count_row from notes")
         row_cont = next(cursor)["count_row"]
 
-        cursor.execute("insert into notes (title, content) values ('Shopping list %s', 'Content text')", row_cont)
+        cursor.execute(
+            "insert into notes (title, content) values (%s, %s)",
+            (f"Shopping list {row_cont}", "Content text"),
+        )
 
         connection.commit()
 
@@ -34,7 +36,6 @@ with pymysql.connect(**config, cursorclass=pymysql.cursors.DictCursor) as connec
         for row in cursor:
             row: dict[str, Any]
             print(f"Note added : {row['title']} : {row['content']}")
-
 
 
 

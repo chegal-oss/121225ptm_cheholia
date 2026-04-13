@@ -1,8 +1,5 @@
 import itertools
-import os
-import sys
-import time
-from typing import OrderedDict, Iterable
+from typing import Iterable
 
 print("\nPython Fundamentals 2025: Домашнее задание 28")
 print("\n1. План по дням недели")
@@ -17,10 +14,9 @@ weekly_schedule = {
     "Sunday": ["Family time", "Rest"]
 }
 
-for i, key in enumerate(itertools.cycle(weekly_schedule.keys())):
+for key, tasks in weekly_schedule.items():
     #input("Нажмите 'Enter' для получения плана: ")
-    print(key, ", ".join(weekly_schedule[key]))
-    if i > 7: break
+    print(key, ", ".join(tasks))
 
 print("\n2. Объединение списков продуктов")
 fruits = ["Apple", "Banana", "Orange"]

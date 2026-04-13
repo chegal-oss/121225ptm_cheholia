@@ -11,7 +11,8 @@ def measure_time(repeat_count: int = 5):
             res = None
             for _ in range(repeat_count): res = func(*args, **kwargs)
             time_exec = datetime.datetime.now() - start
-            print(f"Среднее время выполнения для {repeat_count} вызовов: {round(time_exec.microseconds / 1000000 / repeat_count, 2)} секунд")
+            avg_seconds = time_exec.total_seconds() / repeat_count
+            print(f"Среднее время выполнения для {repeat_count} вызовов: {avg_seconds:.2f} секунд")
             return res
         return wrapper
     return decorator
@@ -22,5 +23,4 @@ def test():
     return "OK"
 
 print(test())
-
 

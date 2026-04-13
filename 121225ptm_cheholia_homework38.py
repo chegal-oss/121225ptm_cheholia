@@ -9,11 +9,18 @@ class BankAccount:
         self.__balance = balance
         self.__history = []
 
+    @staticmethod
+    def _validate_amount(amount):
+        if amount <= 0:
+            raise ValueError("Amount must be positive.")
+
     def deposit(self, amount):
+        self._validate_amount(amount)
         self.__history.append(("Deposit", amount))
         self.__balance += amount
 
     def withdraw(self, amount):
+        self._validate_amount(amount)
         if self.__balance - amount >= 0:
             self.__history.append(("Withdraw", amount))
             self.__balance -= amount
