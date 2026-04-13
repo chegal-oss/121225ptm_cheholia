@@ -1,6 +1,4 @@
 import os
-import sys
-from typing import OrderedDict
 
 print("\nPython Fundamentals 2025: Домашнее задание 27")
 print("\n1. Фильтрация по ключевому слову")
@@ -21,7 +19,7 @@ print("Введите имя файла для поиска:", in_filename)
 print("Введите ключевое слово:", word)
 
 with open(in_filename) as in_file, open(out_filename, "w") as out_file:
-    out_file.write("\n".join(s for s in in_file.read().lower().split("\n") if s.count(word.lower())))
+    out_file.write("\n".join(line for line in in_file.read().split("\n") if word.lower() in line.lower()))
 print(f"Строки, содержащие '{word}', сохранены в {out_filename}.")
 
 with open(out_filename) as out_file:
@@ -56,7 +54,7 @@ out_filename = "unique" + "_" + in_filename
 print("Введите имя файла для поиска:", in_filename)
 
 with open(in_filename) as in_file, open(out_filename, "w") as out_file:
-    out_file.write("\n".join(OrderedDict([(x, "") for x in in_file.read().split("\n")]).keys()))
+    out_file.write("\n".join(dict.fromkeys(in_file.read().split("\n"))))
 
 print(f"Дубликаты удалены. Уникальные строки сохранены в {out_filename}.")
 
@@ -67,4 +65,3 @@ with open(out_filename) as out_file:
 
 os.remove(out_filename)
 os.remove(in_filename)
-
