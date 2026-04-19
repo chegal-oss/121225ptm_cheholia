@@ -1,4 +1,5 @@
 import itertools
+import random
 from typing import Iterable
 
 print("\nPython Fundamentals 2025: Домашнее задание 28")
@@ -14,8 +15,11 @@ weekly_schedule = {
     "Sunday": ["Family time", "Rest"]
 }
 
-for key, tasks in weekly_schedule.items():
-    #input("Нажмите 'Enter' для получения плана: ")
+for key, tasks in itertools.cycle(weekly_schedule.items()):
+    user_input = ["Enter", "Exit"][random.randint(0,10) == 10]
+    print(f"Нажмите 'Enter' для получения плана: {user_input}")
+    if user_input == "Exit":
+        break
     print(key, ", ".join(tasks))
 
 print("\n2. Объединение списков продуктов")
