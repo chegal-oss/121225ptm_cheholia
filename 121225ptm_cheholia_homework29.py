@@ -17,7 +17,11 @@ for i in fib_gen():
 print("\n2. Генератор уникальных элементов")
 data = [3, 1, 2, 3, 4, 1, 5, 2, 6, 7, 5, 8]
 def gen_list(data : list[int]) -> Iterable[int]:
-    yield from dict.fromkeys(data)
+    seen = set()
+    for item in data:
+        if item not in seen:
+            seen.add(item)
+            yield item
 
 for x in gen_list(data):
     print(x)

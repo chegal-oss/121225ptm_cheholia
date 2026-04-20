@@ -21,9 +21,7 @@ def get_logger():
     def log(message = None):
         if message:
             messages.append(f"{message} {datetime.datetime.now():%Y-%m-%d %H:%M:%S}")
-            return None
-        else:
-            return messages
+        return messages
     return log
 
 log = get_logger()
