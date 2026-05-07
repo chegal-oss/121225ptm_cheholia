@@ -15,11 +15,11 @@ class User:
         self.username = username
         self.password = password
         print("Created:", username)
-        User._total_user += 1
+        type(self)._total_user += 1
 
-    @staticmethod
-    def get_total():
-        return f"Total user: {User._total_user}"
+    @classmethod
+    def get_total(cls):
+        return f"Total user: {cls._total_user}"
 
 
 for n, p in (("Вася", "qwerty"), ("", "qweqwewq"), ("Вася", "qwe")):
