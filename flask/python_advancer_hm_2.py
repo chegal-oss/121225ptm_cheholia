@@ -1,17 +1,19 @@
 import json
 import unittest
 
-from pydantic import BaseModel, Field, EmailStr, model_validator
+from pydantic import BaseModel, Field, EmailStr, model_validator, ValidationError
 
 
 class JsonBaseModel(BaseModel):
 
+    #Очень странный метод из п.2 задания
     @classmethod
-    def from_json(cls, json_str):
-        return cls.model_validate_json(json_str)
-
-    def to_json(self):
-        return self.model_dump_json()
+    def is_json_correct(cls, json_str):
+        try:
+            obj = cls.model_validate_json(json_str)
+            return obj.model_dump_json()
+        except ValidationError:
+            raise ValueError("Json is incorrect")
 
 class Address(JsonBaseModel):
     city: str = Field(min_length=2)
@@ -51,10 +53,11 @@ class TestUser(unittest.TestCase):
         }""")
 
     def test_user_correct(self):
-        assert User.from_json(json.dumps(self.json_data)).age == 55
+        assert User(**self.json_data).age == 55
 
-    def test_export_json_correct(self):
-        assert json.loads(User(**self.json_data).to_json()) == self.json_data
+    def test_json_incorrect(self):
+        with self.assertRaisesRegex(ValueError, "Json is incorrect"):
+            User.is_json_correct("{}")
 
     def test_user_name_incorrect(self):
         self.json_data["name"] = "A212121"
