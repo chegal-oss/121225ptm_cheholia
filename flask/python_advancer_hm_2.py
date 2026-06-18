@@ -1,15 +1,8 @@
 import json
 import unittest
-import subprocess
-import sys
 
-try:
-    import email_validator
-    from pydantic import BaseModel, Field, EmailStr, model_validator
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "pydantic"])
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "email-validator"])
-    from pydantic import BaseModel, Field, EmailStr, model_validator
+from pydantic import BaseModel, Field, EmailStr, model_validator
+
 
 class JsonBaseModel(BaseModel):
 
@@ -68,12 +61,12 @@ class TestUser(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "String should match pattern"):
             User(**self.json_data)
 
-    def test_user_wrong_age_and_is_employed(self):
+    def test_user_age_and_is_employed_incorrect(self):
         self.json_data["age"] = 75
         with self.assertRaisesRegex(ValueError, "Age not correct"):
             User(**self.json_data)
 
-    def test_user_validation(self):
+    def test_user_validation_incorrect(self):
         self.json_data["age"] = 123
         self.json_data["address"]["city"] = "N"
         self.json_data["address"]["street"] = "5"
