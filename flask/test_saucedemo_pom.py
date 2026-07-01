@@ -50,17 +50,18 @@ class LoginPage:
 
 
 class InventoryPage:
-    CART = (By.CLASS_NAME, "shopping_cart_link")
+    CART = (By.CSS_SELECTOR, "[data-test='shopping-cart-link']")
+    PRODUCTS = {
+        "Sauce Labs Backpack": (By.ID, "add-to-cart-sauce-labs-backpack"),
+        "Sauce Labs Bolt T-Shirt": (By.ID, "add-to-cart-sauce-labs-bolt-t-shirt"),
+        "Sauce Labs Onesie": (By.ID, "add-to-cart-sauce-labs-onesie"),
+    }
 
     def __init__(self, browser):
         self.browser = browser
 
     def add_product(self, product_name):
-        product = self.browser.find_element(
-            By.XPATH,
-            f"//div[text()='{product_name}']/ancestor::div[@class='inventory_item']",
-        )
-        product.find_element(By.TAG_NAME, "button").click()
+        self.browser.find_element(*self.PRODUCTS[product_name]).click()
 
     def open_cart(self):
         self.browser.find_element(*self.CART).click()
@@ -81,7 +82,7 @@ class CheckoutPage:
     LAST_NAME = (By.ID, "last-name")
     POSTAL_CODE = (By.ID, "postal-code")
     CONTINUE_BUTTON = (By.ID, "continue")
-    TOTAL = (By.CLASS_NAME, "summary_total_label")
+    TOTAL = (By.CSS_SELECTOR, "[data-test='total-label']")
 
     def __init__(self, browser):
         self.browser = browser

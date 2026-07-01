@@ -34,10 +34,7 @@ def browser():
 
 
 def close_cookie_window(browser):
-    buttons = browser.find_elements(
-        By.XPATH,
-        "//button[contains(., 'Consent') or contains(., 'Accept') or contains(., 'Agree') or contains(., 'Принять')]",
-    )
+    buttons = browser.find_elements(By.CLASS_NAME, "fc-data-preferences-accept-all")
     if buttons:
         browser.execute_script("arguments[0].click();", buttons[0])
         sleep(1)
@@ -64,14 +61,15 @@ def test_drag_photo_to_trash(browser):
     iframe = browser.find_element(By.CSS_SELECTOR, "iframe[src*='photo-manager.html']")
     browser.switch_to.frame(iframe)
 
-    photos = browser.find_elements(By.CSS_SELECTOR, "#gallery li")
+    gallery = browser.find_element(By.ID, "gallery")
+    photos = gallery.find_elements(By.TAG_NAME, "li")
     trash = browser.find_element(By.ID, "trash")
 
     ActionChains(browser).drag_and_drop(photos[0], trash).perform()
     sleep(2)
 
-    photos_in_gallery = browser.find_elements(By.CSS_SELECTOR, "#gallery li")
-    photos_in_trash = browser.find_elements(By.CSS_SELECTOR, "#trash li")
+    photos_in_gallery = gallery.find_elements(By.TAG_NAME, "li")
+    photos_in_trash = trash.find_elements(By.TAG_NAME, "li")
 
     assert len(photos_in_gallery) == 3
     assert len(photos_in_trash) == 1

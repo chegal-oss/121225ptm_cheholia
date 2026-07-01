@@ -40,11 +40,11 @@ def test_make_payment_section_screenshot(browser):
     browser.get(PAGE_URL)
     sleep(2)
 
-    cookie_button = browser.find_elements(By.XPATH, "//button[contains(., 'Подтвердить')]")
+    cookie_button = browser.find_elements(By.CLASS_NAME, "t972__accept-btn")
     if cookie_button:
         cookie_button[0].click()
 
-    payment_menu_link = browser.find_element(By.LINK_TEXT, "Способы оплаты")
+    payment_menu_link = browser.find_element(By.CSS_SELECTOR, "a[href='#rec1921734713']")
     browser.execute_script("arguments[0].click();", payment_menu_link)
     sleep(2)
 
